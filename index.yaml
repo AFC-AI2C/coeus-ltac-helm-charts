@@ -3,7 +3,7 @@ entries:
   gitlab:
   - apiVersion: v1
     appVersion: 15.3.1
-    created: "2023-03-22T18:09:41.367120402Z"
+    created: "2023-03-22T18:30:45.420918354Z"
     dependencies:
     - name: gitlab
       repository: ""
@@ -59,6 +59,6 @@ entries:
     sources:
     - https://gitlab.com/gitlab-org/charts/gitlab
     urls:
-    - https://github.com/AFC-AI2C/coeus-ltac-helm-charts/gitlab-6.3.1.tgz
+    - https://github.com/AFC-AI2C/coeus-ltac-helm-charts/raw/main/gitlab-6.3.1.tgz
     version: 6.3.1
-generated: "2023-03-22T18:09:41.206327234Z"
+generated: "2023-03-22T18:30:45.255790349Z"
