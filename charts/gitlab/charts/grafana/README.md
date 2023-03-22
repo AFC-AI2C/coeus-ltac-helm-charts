@@ -135,7 +135,7 @@ This version requires Helm >= 3.1.0.
 | `podAnnotations`                          | Pod annotations                               | `{}`                                                    |
 | `podLabels`                               | Pod labels                                    | `{}`                                                    |
 | `podPortName`                             | Name of the grafana port on the pod           | `grafana`                                               |
-| `sidecar.image.repository`                | Sidecar image repository                      | `ltac.dev.local:5000/kiwigrid/k8s-sidecar`                          |
+| `sidecar.image.repository`                | Sidecar image repository                      | `quay.io/kiwigrid/k8s-sidecar`                          |
 | `sidecar.image.tag`                       | Sidecar image tag                             | `1.10.7`                                                |
 | `sidecar.image.sha`                       | Sidecar image sha (optional)                  | `""`                                                    |
 | `sidecar.imagePullPolicy`                 | Sidecar image pull policy                     | `IfNotPresent`                                          |

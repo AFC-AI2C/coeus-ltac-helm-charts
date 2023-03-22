@@ -50,7 +50,7 @@
 ############
 
 default:
-  image: ltac.dev.local:5000/gitlab-org/gitlab-build-images:gitlab-charts-build-base-helm-3.7
+  image: registry.gitlab.com/gitlab-org/gitlab-build-images:gitlab-charts-build-base-helm-3.7
   tags:
   - gitlab-org
 
@@ -95,8 +95,8 @@ integration test:
   - kubectl cluster-info
   - bash -c "for _i in {0..60}; do kubectl -n default get serviceaccount default -o name > /dev/null 2>&1 && break; sleep 1; done"
   - bash -c "for _i in {0..60}; do kubectl get nodes|grep -w Ready > /dev/null 2>&1 && break; sleep 1; done"
-  # Install helm latest version instead of pre-installed one in ltac.dev.local:5000/gitlab-org/gitlab-build-images image
-  - curl https://ltac.dev.local:5000helm/helm/main/scripts/get-helm-3 | bash
+  # Install helm latest version instead of pre-installed one in registry.gitlab.com/gitlab-org/gitlab-build-images image
+  - curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
   # Run tests
   - bash -x scripts/integration.sh
   after_script:

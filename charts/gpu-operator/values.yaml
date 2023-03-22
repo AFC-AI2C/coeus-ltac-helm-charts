@@ -19,13 +19,12 @@ daemonsets:
     effect: NoSchedule
 
 validator:
-  repository: artifacts.afcmade.com/coeus-docker-local/nvidia/cloud-native
+  repository: nvcr.io/nvidia/cloud-native
   image: gpu-operator-validator
   # If version is not specified, then default is to use chart.AppVersion
   #version: ""
   imagePullPolicy: IfNotPresent
-  imagePullSecrets:
-    - jfrog-artifactory
+  imagePullSecrets: []
   env: []
   args: []
   securityContext:
@@ -39,23 +38,20 @@ validator:
         value: "true"
 
 operator:
-  repository: artifacts.afcmade.com/coeus-docker-local/nvidia
+  repository: nvcr.io/nvidia
   image: gpu-operator
   # If version is not specified, then default is to use chart.AppVersion
   #version: ""
   imagePullPolicy: IfNotPresent
-  imagePullSecrets:
-    - jfrog-artifactory
+  imagePullSecrets: []
   priorityClassName: system-node-critical
   defaultRuntime: docker
   runtimeClass: nvidia
   initContainer:
     image: cuda
-    repository: artifacts.afcmade.com/coeus-docker-local/nvidia
+    repository: nvcr.io/nvidia
     version: 11.2.1-base-ubi8
     imagePullPolicy: IfNotPresent
-    imagePullSecrets:
-      - jfrog-artifactory
   tolerations:
   - key: "node-role.kubernetes.io/master"
     operator: "Equal"
@@ -87,17 +83,16 @@ mig:
 
 driver:
   enabled: true
-  repository: artifacts.afcmade.com/coeus-docker-local/nvidia
+  repository: nvcr.io/nvidia
   image: driver
   version: "470.57.02"
   imagePullPolicy: IfNotPresent
-  imagePullSecrets:
-    - jfrog-artifactory
+  imagePullSecrets: []
   rdma:
     enabled: false
   manager:
     image: k8s-driver-manager
-    repository: artifacts.afcmade.com/coeus-docker-local/nvidia/cloud-native
+    repository: nvcr.io/nvidia/cloud-native
     version: v0.1.0
     imagePullPolicy: IfNotPresent
     env:
@@ -131,12 +126,11 @@ driver:
 
 toolkit:
   enabled: true
-  repository: artifacts.afcmade.com/coeus-docker-local/nvidia/k8s
+  repository: nvcr.io/nvidia/k8s
   image: container-toolkit
   version: 1.6.0-ubuntu18.04
   imagePullPolicy: IfNotPresent
-  imagePullSecrets:
-    - jfrog-artifactory
+  imagePullSecrets: []
   env: []
   securityContext:
     privileged: true
@@ -145,12 +139,11 @@ toolkit:
   resources: {}
 
 devicePlugin:
-  repository: artifacts.afcmade.com/coeus-docker-local/nvidia
+  repository: nvcr.io/nvidia
   image: k8s-device-plugin
   version: v0.9.0-ubi8
   imagePullPolicy: IfNotPresent
-  imagePullSecrets:
-    - jfrog-artifactory
+  imagePullSecrets: []
   args: []
   env:
     - name: PASS_DEVICE_SPECS
@@ -171,7 +164,7 @@ devicePlugin:
 
 dcgm:
   enabled: true
-  repository: artifacts.afcmade.com/coeus-docker-local/nvidia/cloud-native
+  repository: nvcr.io/nvidia/cloud-native
   image: dcgm
   version: 2.2.3-ubuntu20.04
   imagePullPolicy: IfNotPresent
@@ -180,11 +173,9 @@ dcgm:
   env: []
   securityContext: {}
   resources: {}
-  imagePullSecrets:
-    - jfrog-artifactory
 
 dcgmExporter:
-  repository: artifacts.afcmade.com/coeus-docker-local/nvidia/k8s
+  repository: nvcr.io/nvidia/k8s
   image: dcgm-exporter
   version: 2.2.9-2.4.0-ubuntu20.04
   imagePullPolicy: IfNotPresent
@@ -197,16 +188,13 @@ dcgmExporter:
       value: "/etc/dcgm-exporter/dcp-metrics-included.csv"
   securityContext: {}
   resources: {}
-  imagePullSecrets:
-    - jfrog-artifactory
 
 gfd:
-  repository: artifacts.afcmade.com/coeus-docker-local/nvidia
+  repository: nvcr.io/nvidia
   image: gpu-feature-discovery
   version: v0.4.1
   imagePullPolicy: IfNotPresent
-  imagePullSecrets:
-    - jfrog-artifactory
+  imagePullSecrets: []
   env:
     - name: GFD_SLEEP_INTERVAL
       value: 60s
@@ -219,12 +207,11 @@ gfd:
 
 migManager:
   enabled: true
-  repository: artifacts.afcmade.com/coeus-docker-local/nvidia/cloud-native
+  repository: nvcr.io/nvidia/cloud-native
   image: k8s-mig-manager
   version: v0.1.2-ubuntu20.04
   imagePullPolicy: IfNotPresent
-  imagePullSecrets:
-    - jfrog-artifactory
+  imagePullSecrets: []
   env:
     - name: WITH_REBOOT
       value: "false"
@@ -234,13 +221,12 @@ migManager:
 
 nodeStatusExporter:
   enabled: false
-  repository: artifacts.afcmade.com/coeus-docker-local/nvidia/cloud-native
+  repository: nvcr.io/nvidia/cloud-native
   image: gpu-operator-validator
   # If version is not specified, then default is to use chart.AppVersion
   #version: ""
   imagePullPolicy: IfNotPresent
-  imagePullSecrets:
-    - jfrog-artifactory
+  imagePullSecrets: []
   resources: {}
 
 node-feature-discovery:

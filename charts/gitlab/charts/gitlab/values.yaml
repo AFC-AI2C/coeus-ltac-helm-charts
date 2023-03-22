@@ -10,30 +10,30 @@ global:
     # Default repositories used to pull Gitlab Enterprise Edition images.
     # See the image.repository and workhorse.repository template helpers.
     migrations:
-      repository: ltac.dev.local:5000/gitlab-org/build/cng/gitlab-toolbox-ee
+      repository: registry.gitlab.com/gitlab-org/build/cng/gitlab-toolbox-ee
     sidekiq:
-      repository: ltac.dev.local:5000/gitlab-org/build/cng/gitlab-sidekiq-ee
+      repository: registry.gitlab.com/gitlab-org/build/cng/gitlab-sidekiq-ee
     toolbox:
-      repository: ltac.dev.local:5000/gitlab-org/build/cng/gitlab-toolbox-ee
+      repository: registry.gitlab.com/gitlab-org/build/cng/gitlab-toolbox-ee
     webservice:
-      repository: ltac.dev.local:5000/gitlab-org/build/cng/gitlab-webservice-ee
+      repository: registry.gitlab.com/gitlab-org/build/cng/gitlab-webservice-ee
     workhorse:
-      repository: ltac.dev.local:5000/gitlab-org/build/cng/gitlab-workhorse-ee
+      repository: registry.gitlab.com/gitlab-org/build/cng/gitlab-workhorse-ee
     geo-logcursor:
-      repository: ltac.dev.local:5000/gitlab-org/build/cng/gitlab-geo-logcursor
+      repository: registry.gitlab.com/gitlab-org/build/cng/gitlab-geo-logcursor
   communityImages:
     # Default repositories used to pull Gitlab Community Edition images.
     # See the image.repository and workhorse.repository template helpers.
     migrations:
-      repository: ltac.dev.local:5000/gitlab-org/build/cng/gitlab-toolbox-ce
+      repository: registry.gitlab.com/gitlab-org/build/cng/gitlab-toolbox-ce
     sidekiq:
-      repository: ltac.dev.local:5000/gitlab-org/build/cng/gitlab-sidekiq-ce
+      repository: registry.gitlab.com/gitlab-org/build/cng/gitlab-sidekiq-ce
     toolbox:
-      repository: ltac.dev.local:5000/gitlab-org/build/cng/gitlab-toolbox-ce
+      repository: registry.gitlab.com/gitlab-org/build/cng/gitlab-toolbox-ce
     webservice:
-      repository: ltac.dev.local:5000/gitlab-org/build/cng/gitlab-webservice-ce
+      repository: registry.gitlab.com/gitlab-org/build/cng/gitlab-webservice-ce
     workhorse:
-      repository: ltac.dev.local:5000/gitlab-org/build/cng/gitlab-workhorse-ce
+      repository: registry.gitlab.com/gitlab-org/build/cng/gitlab-workhorse-ce
   # This exists to support template handling
   psql:
     knownDecompositions:

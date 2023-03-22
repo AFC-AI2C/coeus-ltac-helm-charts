@@ -1,12 +1,12 @@
 # Default values for kube-state-metrics.
 prometheusScrape: true
 image:
-  repository: ltac.dev.local:5000/kube-state-metrics/kube-state-metrics
+  repository: k8s.gcr.io/kube-state-metrics/kube-state-metrics
   tag: v2.2.4
   pullPolicy: IfNotPresent
 
-imagePullSecrets:
-- name: jfrog-artifactory
+imagePullSecrets: []
+# - name: "image-pull-secret"
 
 # If set to true, this will deploy kube-state-metrics as a StatefulSet and the data
 # will be automatically sharded across <.Values.replicas> pods using the built-in
@@ -54,8 +54,7 @@ serviceAccount:
   name:
   # Reference to one or more secrets to be used when pulling images
   # ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
-  imagePullSecrets:
-  - name: jfrog-artifactory
+  imagePullSecrets: []
   # ServiceAccount annotations.
   # Use case: AWS EKS IAM roles for service accounts
   # ref: https://docs.aws.amazon.com/eks/latest/userguide/specify-service-account-role.html

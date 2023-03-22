@@ -12,22 +12,22 @@ dependencies:
   repository: ""
   version: '*.*.*'
 - name: cert-manager
-  repository: https://ltac.dev.local:5000/
+  repository: https://charts.jetstack.io/
   version: v1.5.4
 - name: prometheus
-  repository: https://ltac.dev.local:5000helm-charts
+  repository: https://prometheus-community.github.io/helm-charts
   version: 15.0.4
 - name: postgresql
-  repository: https://ltac.dev.local:5000bitnami/charts/eb5f9a9513d987b519f0ecd732e7031241c50328/bitnami
+  repository: https://raw.githubusercontent.com/bitnami/charts/eb5f9a9513d987b519f0ecd732e7031241c50328/bitnami
   version: 8.9.4
 - name: gitlab-runner
-  repository: https://ltac.dev.local:5000
+  repository: https://charts.gitlab.io/
   version: 0.43.1
 - name: grafana
-  repository: https://ltac.dev.local:5000helm-charts
+  repository: https://grafana.github.io/helm-charts
   version: 6.11.0
 - name: redis
-  repository: https://ltac.dev.local:5000bitnami/charts/eb5f9a9513d987b519f0ecd732e7031241c50328/bitnami
+  repository: https://raw.githubusercontent.com/bitnami/charts/eb5f9a9513d987b519f0ecd732e7031241c50328/bitnami
   version: 11.3.4
 - name: nginx-ingress
   repository: ""

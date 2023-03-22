@@ -1,14 +1,13 @@
 ## Set default image, imageTag, and imagePullPolicy.
 ## Distributed Minio ref: https://docs.minio.io/docs/distributed-minio-quickstart-guide
 ##
-image: "ltac.dev.local:5000/minio/minio"
+image: "minio/minio"
 imageTag: "RELEASE.2017-12-28T01-21-00Z"
 # imagePullPolicy: IfNotPresent
-pullSecrets:
-- name: jfrog-artifactory
+# pullSecrets: []
 
 minioMc:
-  image: ltac.dev.local:5000/minio/mc
+  image: minio/mc
   tag: "RELEASE.2018-07-13T00-53-22Z"
 
 ingress:

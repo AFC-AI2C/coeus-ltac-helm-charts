@@ -13,18 +13,18 @@ clusterDomain: cluster.local
 ## Set default image, imageTag, and imagePullPolicy. mode is used to indicate the
 ##
 image:
-  repository: artifacts.afcmade.com/coeus-docker-local/minio/minio
+  repository: quay.io/minio/minio
   tag: RELEASE.2022-09-01T23-53-36Z
   pullPolicy: IfNotPresent
 
-imagePullSecrets:
-- name: jfrog-artifactory
+imagePullSecrets: []
+# - name: "image-pull-secret"
 
 ## Set default image, imageTag, and imagePullPolicy for the `mc` (the minio
 ## client used to create a default bucket).
 ##
 mcImage:
-  repository: artifacts.afcmade.com/coeus-docker-local/minio/mc
+  repository: quay.io/minio/mc
   tag: RELEASE.2022-08-28T20-08-11Z
   pullPolicy: IfNotPresent
 

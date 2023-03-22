@@ -19,7 +19,7 @@ gitaly: {}
 
 internal: {}
 image:
-  repository: ltac.dev.local:5000/gitlab-org/build/cng/gitaly
+  repository: registry.gitlab.com/gitlab-org/build/cng/gitaly
   # pullPolicy: IfNotPresent
   # pullSecrets: []
   # tag: master

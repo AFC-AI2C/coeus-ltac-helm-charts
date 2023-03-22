@@ -5,8 +5,8 @@ global:
   ## Reference to one or more secrets to be used when pulling images
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
   ##
-  imagePullSecrets:
-  - name: jfrog-artifactory
+  imagePullSecrets: []
+  # - name: "image-pull-secret"
 
   # Optional priority class to be used for the cert-manager pods
   priorityClassName: ""
@@ -54,10 +54,10 @@ strategy: {}
 featureGates: ""
 
 image:
-  repository: ltac.dev.local:5000/jetstack/cert-manager-controller
+  repository: quay.io/jetstack/cert-manager-controller
   # You can manage a registry with
-  # registry: ltac.dev.local:5000
-  # repository: ltac.dev.local:5000/jetstack/cert-manager-controller
+  # registry: quay.io
+  # repository: jetstack/cert-manager-controller
 
   # Override the image tag to deploy by setting this variable.
   # If no value is set, the chart's appVersion will be used.
@@ -272,10 +272,10 @@ webhook:
   serviceLabels: {}
 
   image:
-    repository: ltac.dev.local:5000/jetstack/cert-manager-webhook
+    repository: quay.io/jetstack/cert-manager-webhook
     # You can manage a registry with
-    # registry: ltac.dev.local:5000
-    # repository: ltac.dev.local:5000/jetstack/cert-manager-webhook
+    # registry: quay.io
+    # repository: jetstack/cert-manager-webhook
 
     # Override the image tag to deploy by setting this variable.
     # If no value is set, the chart's appVersion will be used.
@@ -375,10 +375,10 @@ cainjector:
   podLabels: {}
 
   image:
-    repository: ltac.dev.local:5000/jetstack/cert-manager-cainjector
+    repository: quay.io/jetstack/cert-manager-cainjector
     # You can manage a registry with
-    # registry: ltac.dev.local:5000
-    # repository: ltac.dev.local:5000/jetstack/cert-manager-cainjector
+    # registry: quay.io
+    # repository: jetstack/cert-manager-cainjector
 
     # Override the image tag to deploy by setting this variable.
     # If no value is set, the chart's appVersion will be used.
@@ -443,10 +443,10 @@ startupapicheck:
   podLabels: {}
 
   image:
-    repository: ltac.dev.local:5000/jetstack/cert-manager-ctl
+    repository: quay.io/jetstack/cert-manager-ctl
     # You can manage a registry with
-    # registry: ltac.dev.local:5000
-    # repository: ltac.dev.local:5000/jetstack/cert-manager-ctl
+    # registry: quay.io
+    # repository: jetstack/cert-manager-ctl
 
     # Override the image tag to deploy by setting this variable.
     # If no value is set, the chart's appVersion will be used.

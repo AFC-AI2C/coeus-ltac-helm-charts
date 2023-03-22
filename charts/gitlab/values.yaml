@@ -27,10 +27,9 @@ global:
   common:
     labels: {}
 
-  image:
+  image: {}
     # pullPolicy: IfNotPresent
-    pullSecrets:
-      - name: jfrog-artifactory
+    # pullSecrets: []
 
   ## Supplemental Pod labels. Will not be used for selectors.
   pod:
@@ -669,15 +668,14 @@ global:
   # configuration of certificates container & custom CA injection
   certificates:
     image:
-      repository: ltac.dev.local:5000/gitlab-org/build/cng/alpine-certificates
+      repository: registry.gitlab.com/gitlab-org/build/cng/alpine-certificates
       # The digest below comes from a given tag pipeline because they are mirrored to .com,
       # ensuring that the image tag is available from both instances. The digest can be
       # found in the 'sync_images' job.
       #   https://dev.gitlab.org/gitlab/charts/components/images/-/tags
       tag: 20191127-r2@sha256:367d437d024d7647432d67fb2442e3e5723af5930bad77d3535f4f8f4f8630d9
       # pullPolicy: IfNotPresent
-      pullSecrets:
-       - name: jfrog-artifactory
+      # pullSecrets: []
     customCAs: []
     # - secret: custom-CA
     # - secret: more-custom-CAs
@@ -692,26 +690,24 @@ global:
   ## kubectl image used by hooks to carry out specific jobs
   kubectl:
     image:
-      repository: ltac.dev.local:5000/gitlab-org/build/cng/kubectl
+      repository: registry.gitlab.com/gitlab-org/build/cng/kubectl
       # The digest below comes from a given tag pipeline because they are mirrored to .com,
       # ensuring that the image tag is available from both instances. The digest can be
       # found in the 'sync_images' job.
       #   https://dev.gitlab.org/gitlab/charts/components/images/-/tags
       tag: 1.18.20@sha256:8d27c191af306cafddba2f293c5613f8966363f779d79a5599ad0231e60069e4
       # pullPolicy: IfNotPresent
-      pullSecrets:
-       - name: jfrog-artifactory
+      # pullSecrets: []
     securityContext:
       # in most base images, this is `nobody:nogroup`
       runAsUser: 65534
       fsGroup: 65534
   busybox:
     image:
-      repository: ltac.dev.local:5000/gitlab-org/cloud-native/mirror/images/busybox
+      repository: registry.gitlab.com/gitlab-org/cloud-native/mirror/images/busybox
       tag: latest
       # pullPolicy: IfNotPresent
-      pullSecrets:
-       - name: jfrog-artifactory
+      # pullSecrets: []
 
   ## https://docs.gitlab.com/charts/charts/globals#service-accounts
   serviceAccount:
@@ -759,8 +755,7 @@ upgradeCheck:
     # repository:
     # tag:
     # pullPolicy: IfNotPresent
-    # pullSecrets:
-    #   - name: jfrog-artifactory
+    # pullSecrets: []
   securityContext:
     # in alpine/debian/busybox based images, this is `nobody:nogroup`
     runAsUser: 65534
@@ -1047,9 +1042,8 @@ shared-secrets:
   selfsign:
     image:
       # pullPolicy: IfNotPresent
-      pullSecrets:
-       - name: jfrog-artifactory
-      repository: ltac.dev.local:5000/gitlab-org/build/cng/cfssl-self-sign
+      # pullSecrets: []
+      repository: registry.gitlab.com/gitlab-org/build/cng/cfssl-self-sign
       # The digest below comes from a given tag pipeline because they are mirrored to .com,
       # ensuring that the image tag is available from both instances. The digest can be
       # found in the 'sync_images' job.
@@ -1156,9 +1150,6 @@ grafana:
 ## Settings for individual sub-charts under GitLab
 ## Note: Many of these settings are configurable via globals
 gitlab:
-  image:
-    pullSecrets:
-      - jfrog-artifactory 
   ## https://docs.gitlab.com/charts/charts/gitlab/toolbox
   toolbox:
     replicas: 1

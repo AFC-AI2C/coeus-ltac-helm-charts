@@ -5,8 +5,8 @@ global:
   ## Reference to one or more secrets to be used when pulling images
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
   ##
-  imagePullSecrets:
-  - name: jfrog-artifactory
+  imagePullSecrets: []
+  # - name: "image-pull-secret"
 
   # Optional priority class to be used for the cert-manager pods
   priorityClassName: ""
@@ -39,7 +39,7 @@ strategy: {}
 featureGates: ""
 
 image:
-  repository: artifacts.afcmade.com/coeus-docker-local/jetstack/cert-manager-controller
+  repository: quay.io/jetstack/cert-manager-controller
   # You can manage a registry with
   # registry: quay.io
   # repository: jetstack/cert-manager-controller
@@ -243,7 +243,7 @@ webhook:
   podLabels: {}
 
   image:
-    repository: artifacts.afcmade.com/coeus-docker-local/jetstack/cert-manager-webhook
+    repository: quay.io/jetstack/cert-manager-webhook
     # You can manage a registry with
     # registry: quay.io
     # repository: jetstack/cert-manager-webhook
@@ -330,7 +330,7 @@ cainjector:
   podLabels: {}
 
   image:
-    repository: artifacts.afcmade.com/coeus-docker-local/jetstack/cert-manager-cainjector
+    repository: quay.io/jetstack/cert-manager-cainjector
     # You can manage a registry with
     # registry: quay.io
     # repository: jetstack/cert-manager-cainjector

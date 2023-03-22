@@ -18,13 +18,13 @@ controller:
   image:
     ## Keep false as default for now!
     chroot: false
-    registry: artifacts.afcmade.com/coeus-docker-local
+    registry: registry.k8s.io
     image: ingress-nginx/controller
     ## for backwards compatibility consider setting the full image url via the repository value below
     ## use *either* current default registry/image or repository format or installing chart by providing the values.yaml will fail
     ## repository:
     tag: "v1.5.1"
-    digest: sha256:97fa1ff828554ff4ee1b0416e54ae2238b27d1faa6d314d5a94a92f1f99cf767
+    digest: sha256:4ba73c697770664c1e00e9f968de14e08f606ff961c76e5d7033a4a9c593c629
     digestChroot: sha256:c1c091b88a6c936a83bd7b098662760a87868d12452529bad0d178fb36147345
     pullPolicy: IfNotPresent
     # www-data -> uid 101
@@ -204,6 +204,7 @@ controller:
   #  keel.sh/policy: patch
   #  keel.sh/trigger: poll
 
+
   # -- The update strategy to apply to the Deployment or DaemonSet
   ##
   updateStrategy: {}
@@ -214,6 +215,7 @@ controller:
   # -- `minReadySeconds` to avoid killing pods before we are ready
   ##
   minReadySeconds: 0
+
 
   # -- Node tolerations for server scheduling to nodes with taints
   ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
@@ -227,8 +229,7 @@ controller:
   # -- Affinity and anti-affinity rules for server scheduling to nodes
   ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
   ##
-  affinity:
-    {}
+  affinity: {}
     # # An example of preferred pod anti-affinity, weight is in the range 1-100
     # podAntiAffinity:
     #   preferredDuringSchedulingIgnoredDuringExecution:
@@ -272,8 +273,7 @@ controller:
   # -- Topology spread constraints rely on node labels to identify the topology domain(s) that each Node is in.
   ## Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/
   ##
-  topologySpreadConstraints:
-    []
+  topologySpreadConstraints: []
     # - maxSkew: 1
     #   topologyKey: topology.kubernetes.io/zone
     #   whenUnsatisfiable: DoNotSchedule
@@ -329,6 +329,7 @@ controller:
     successThreshold: 1
     failureThreshold: 3
 
+
   # -- Path of the health check endpoint. All requests received on the port defined by
   # the healthz-port parameter are forwarded internally to this path.
   healthCheckPath: "/healthz"
@@ -351,9 +352,9 @@ controller:
   ## Ideally, there should be no limits.
   ## https://engineering.indeedblog.com/blog/2019/12/cpu-throttling-regression-fix/
   resources:
-    ##  limits:
-    ##    cpu: 100m
-    ##    memory: 90Mi
+  ##  limits:
+  ##    cpu: 100m
+  ##    memory: 90Mi
     requests:
       cpu: 100m
       memory: 90Mi
@@ -365,8 +366,7 @@ controller:
     maxReplicas: 11
     targetCPUUtilizationPercentage: 50
     targetMemoryUtilizationPercentage: 50
-    behavior:
-      {}
+    behavior: {}
       # scaleDown:
       #   stabilizationWindowSeconds: 300
       #  policies:
@@ -409,26 +409,26 @@ controller:
       #  annotations:
       # key: value
     triggers: []
-    #     - type: prometheus
-    #       metadata:
-    #         serverAddress: http://<prometheus-host>:9090
-    #         metricName: http_requests_total
-    #         threshold: '100'
-    #         query: sum(rate(http_requests_total{deployment="my-deployment"}[2m]))
+ #     - type: prometheus
+ #       metadata:
+ #         serverAddress: http://<prometheus-host>:9090
+ #         metricName: http_requests_total
+ #         threshold: '100'
+ #         query: sum(rate(http_requests_total{deployment="my-deployment"}[2m]))
 
     behavior: {}
-  #     scaleDown:
-  #       stabilizationWindowSeconds: 300
-  #       policies:
-  #       - type: Pods
-  #         value: 1
-  #         periodSeconds: 180
-  #     scaleUp:
-  #       stabilizationWindowSeconds: 300
-  #       policies:
-  #       - type: Pods
-  #         value: 2
-  #         periodSeconds: 60
+ #     scaleDown:
+ #       stabilizationWindowSeconds: 300
+ #       policies:
+ #       - type: Pods
+ #         value: 1
+ #         periodSeconds: 180
+ #     scaleUp:
+ #       stabilizationWindowSeconds: 300
+ #       policies:
+ #       - type: Pods
+ #         value: 2
+ #         periodSeconds: 60
 
   # -- Enable mimalloc as a drop-in replacement for malloc.
   ## ref: https://github.com/microsoft/mimalloc
@@ -629,8 +629,7 @@ controller:
     createSecretJob:
       securityContext:
         allowPrivilegeEscalation: false
-      resources:
-        {}
+      resources: {}
         # limits:
         #   cpu: 10m
         #   memory: 20Mi
@@ -646,13 +645,13 @@ controller:
     patch:
       enabled: true
       image:
-        registry: artifacts.afcmade.com/coeus-docker-local
+        registry: registry.k8s.io
         image: ingress-nginx/kube-webhook-certgen
         ## for backwards compatibility consider setting the full image url via the repository value below
         ## use *either* current default registry/image or repository format or installing chart by providing the values.yaml will fail
         ## repository:
         tag: v20220916-gd32f8c343
-        digest: sha256:c0e3bef270e179a5e4ab373f8ba6d57f596f3683d9d40c33ea900b19ec182ba2
+        digest: sha256:39c5b2e3310dc4264d638ad28d9d1d96c4cbb2b2dcfb52368fe4e3c63f61e10f
         pullPolicy: IfNotPresent
       # -- Provide a priority class name to the webhook patching job
       ##
@@ -667,6 +666,7 @@ controller:
         runAsNonRoot: true
         runAsUser: 2000
         fsGroup: 2000
+
 
   metrics:
     port: 10254
@@ -714,8 +714,7 @@ controller:
       enabled: false
       additionalLabels: {}
       # namespace: ""
-      rules:
-        []
+      rules: []
         # # These are just examples rules, please adapt them to your needs
         # - alert: NGINXConfigFailed
         #   expr: count(nginx_ingress_controller_config_last_reload_successful == 0) > 0
@@ -777,7 +776,7 @@ defaultBackend:
 
   name: defaultbackend
   image:
-    registry: artifacts.afcmade.com/coeus-docker-local
+    registry: registry.k8s.io
     image: defaultbackend-amd64
     ## for backwards compatibility consider setting the full image url via the repository value below
     ## use *either* current default registry/image or repository format or installing chart by providing the values.yaml will fail
@@ -925,8 +924,8 @@ serviceAccount:
 
 # -- Optional array of imagePullSecrets containing private registry credentials
 ## Ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
-imagePullSecrets:
-  - name: jfrog-artifactory
+imagePullSecrets: []
+# - name: secretName
 
 # -- TCP service key-value pairs
 ## Ref: https://github.com/kubernetes/ingress-nginx/blob/main/docs/user-guide/exposing-tcp-udp-services.md

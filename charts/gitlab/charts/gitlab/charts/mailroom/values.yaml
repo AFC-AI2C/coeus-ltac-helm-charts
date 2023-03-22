@@ -1,5 +1,5 @@
 image:
-  repository: ltac.dev.local:5000/gitlab-org/build/cng/gitlab-mailroom
+  repository: registry.gitlab.com/gitlab-org/build/cng/gitlab-mailroom
   # tag: v0.9.1
   # pullPolicy: IfNotPresent
   # pullSecrets: []

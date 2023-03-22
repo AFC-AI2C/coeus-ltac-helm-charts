@@ -4,7 +4,7 @@
 image: {}
   # pullPolicy: IfNotPresent
   # pullSecrets: []
-  # repository: ltac.dev.local:5000/gitlab-org/build/cng/gitlab-webservice-ee
+  # repository: registry.gitlab.com/gitlab-org/build/cng/gitlab-webservice-ee
   # tag: master
 
 init:
@@ -172,7 +172,7 @@ workhorse:
       cpu: 100m
       memory: 100M
   # shutdownTimeout:
-  # image: ltac.dev.local:5000/gitlab-org/build/cng/gitlab-workhorse-ee
+  # image: registry.gitlab.com/gitlab-org/build/cng/gitlab-workhorse-ee
   livenessProbe:
     initialDelaySeconds: 20
     periodSeconds: 60

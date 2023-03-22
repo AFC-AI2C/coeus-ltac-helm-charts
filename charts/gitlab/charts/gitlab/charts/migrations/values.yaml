@@ -4,7 +4,7 @@
 image: {}
   # pullPolicy: IfNotPresent
   # pullSecrets: []
-  # repository: ltac.dev.local:5000/gitlab-org/build/cng/gitlab-toolbox-ee
+  # repository: registry.gitlab.com/gitlab-org/build/cng/gitlab-toolbox-ee
   # tag: master
 
 init:

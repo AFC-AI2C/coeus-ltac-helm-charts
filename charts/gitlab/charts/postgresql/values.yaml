@@ -5,8 +5,8 @@
 global:
   postgresql: {}
 #   imageRegistry: myRegistryName
-  imagePullSecrets:
-    - jfrog-artifactory
+#   imagePullSecrets:
+#     - myRegistryKeySecretName
 #   storageClass: myStorageClass
 
 ## Bitnami PostgreSQL image version
@@ -14,7 +14,7 @@ global:
 ##
 image:
   registry: docker.io
-  repository: ltac.dev.local:5000/bitnami/postgresql
+  repository: bitnami/postgresql
   tag: 11.7.0-debian-10-r90
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
@@ -25,8 +25,8 @@ image:
   ## Secrets must be manually created in the namespace.
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
   ##
-  pullSecrets:
-    - jfrog-artifactory
+  # pullSecrets:
+  #   - myRegistryKeySecretName
 
   ## Set to true if you would like to see extra information on logs
   ## It turns BASH and NAMI debugging in minideb
@@ -49,7 +49,7 @@ volumePermissions:
   enabled: false
   image:
     registry: docker.io
-    repository: ltac.dev.local:5000/bitnami/minideb
+    repository: bitnami/minideb
     tag: buster
     ## Specify a imagePullPolicy
     ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
@@ -60,8 +60,8 @@ volumePermissions:
     ## Secrets must be manually created in the namespace.
     ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
     ##
-    pullSecrets:
-      - jfrog-artifactory
+    # pullSecrets:
+    #   - myRegistryKeySecretName
   ## Init container Security Context
   ## Note: the chown of the data folder is done to securityContext.runAsUser
   ## and not the below volumePermissions.securityContext.runAsUser
@@ -516,15 +516,15 @@ metrics:
 
   image:
     registry: docker.io
-    repository: ltac.dev.local:5000/bitnami/postgres-exporter
+    repository: bitnami/postgres-exporter
     tag: 0.8.0-debian-10-r99
     pullPolicy: IfNotPresent
     ## Optionally specify an array of imagePullSecrets.
     ## Secrets must be manually created in the namespace.
     ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
     ##
-    pullSecrets:
-      - jfrog-artifactory
+    # pullSecrets:
+    #   - myRegistryKeySecretName
   ## Define additional custom metrics
   ## ref: https://github.com/wrouesnel/postgres_exporter#adding-new-metrics-via-a-config-file
   # customMetrics:

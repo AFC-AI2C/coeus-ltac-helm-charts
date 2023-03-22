@@ -51,7 +51,7 @@ policyController:
   # image -- Docker image for the policy controller
   image:
     # -- Docker image for the proxy
-    name: artifacts.afcmade.com/coeus-docker-local/policy-controller
+    name: cr.l5d.io/linkerd/policy-controller
     # -- Pull policy for the proxy container Docker image
     # @default -- imagePullPolicy
     pullPolicy: ""
@@ -93,7 +93,7 @@ proxy:
   inboundConnectTimeout: 100ms
   image:
     # -- Docker image for the proxy
-    name: artifacts.afcmade.com/coeus-docker-local/proxy
+    name: cr.l5d.io/linkerd/proxy
     # -- Pull policy for the proxy container Docker image
     # @default -- imagePullPolicy
     pullPolicy: ""
@@ -168,7 +168,7 @@ proxyInit:
   logFormat: ""
   image:
     # -- Docker image for the proxy-init container
-    name: artifacts.afcmade.com/coeus-docker-local/proxy-init
+    name: cr.l5d.io/linkerd/proxy-init
     # -- Pull policy for the proxy-init container Docker image
     # @default -- imagePullPolicy
     pullPolicy: ""
@@ -194,8 +194,7 @@ proxyInit:
 
 # -- For Private docker registries, authentication is needed.
 #  Registry secrets are applied to the respective service accounts
-imagePullSecrets:
-  - name: jfrog-artifactory
+imagePullSecrets: []
 # - name: my-private-docker-registry-login-secret
 
 # -- Allow proxies to perform transparent HTTP/2 upgrading
@@ -209,7 +208,7 @@ enablePSP: false
 webhookFailurePolicy: Ignore
 
 # controllerImage -- Docker image for the destination and identity components
-controllerImage: artifacts.afcmade.com/coeus-docker-local/controller
+controllerImage: cr.l5d.io/linkerd/controller
 # -- Number of replicas for each control plane pod
 controllerReplicas: 1
 # -- User ID for the control plane components
@@ -228,7 +227,7 @@ controllerUID: 2103
 debugContainer:
   image:
     # -- Docker image for the debug container
-    name: artifacts.afcmade.com/coeus-docker-local/debug
+    name: cr.l5d.io/linkerd/debug
     # -- Pull policy for the debug container Docker image
     # @default -- imagePullPolicy
     pullPolicy: ""

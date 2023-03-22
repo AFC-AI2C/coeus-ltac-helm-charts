@@ -38,7 +38,7 @@ networkpolicy:
   annotations: {}
 
 image:
-  repository: ltac.dev.local:5000/gitlab-org/build/cng/gitlab-pages
+  repository: registry.gitlab.com/gitlab-org/build/cng/gitlab-pages
   # tag: master
   # pullPolicy: IfNotPresent
   # pullSecrets: []

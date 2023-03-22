@@ -5,7 +5,7 @@ podSecurityPolicy:
   enabled: false
 
 imagePullSecrets:
-- name: jfrog-artifactory
+# - name: "image-pull-secret"
 
 ## Define serviceAccount names for components. Defaults to component's fully qualified name.
 ##
@@ -47,7 +47,7 @@ alertmanager:
   ## alertmanager container image
   ##
   image:
-    repository: ltac.dev.local:5000/prometheus/alertmanager
+    repository: quay.io/prometheus/alertmanager
     tag: v0.23.0
     pullPolicy: IfNotPresent
 
@@ -377,7 +377,7 @@ configmapReload:
     ## configmap-reload container image
     ##
     image:
-      repository: ltac.dev.local:5000/jimmidyson/configmap-reload
+      repository: jimmidyson/configmap-reload
       tag: v0.5.0
       pullPolicy: IfNotPresent
 
@@ -415,7 +415,7 @@ configmapReload:
     ## configmap-reload container image
     ##
     image:
-      repository: ltac.dev.local:5000/jimmidyson/configmap-reload
+      repository: jimmidyson/configmap-reload
       tag: v0.5.0
       pullPolicy: IfNotPresent
 
@@ -476,7 +476,7 @@ nodeExporter:
   ## node-exporter container image
   ##
   image:
-    repository: ltac.dev.local:5000/prometheus/node-exporter
+    repository: quay.io/prometheus/node-exporter
     tag: v1.3.0
     pullPolicy: IfNotPresent
 
@@ -651,7 +651,7 @@ server:
   ## Prometheus server container image
   ##
   image:
-    repository: ltac.dev.local:5000/prometheus/prometheus
+    repository: quay.io/prometheus/prometheus
     tag: v2.31.1
     pullPolicy: IfNotPresent
 
@@ -1110,7 +1110,7 @@ pushgateway:
   ## pushgateway container image
   ##
   image:
-    repository: ltac.dev.local:5000/prom/pushgateway
+    repository: prom/pushgateway
     tag: v1.4.2
     pullPolicy: IfNotPresent
 

@@ -4,8 +4,8 @@
 ##
 global:
   # imageRegistry: myRegistryName
-  imagePullSecrets:
-    - jfrog-artifactory
+  # imagePullSecrets:
+  #   - myRegistryKeySecretName
   # storageClass: myStorageClass
   redis: {}
 
@@ -13,7 +13,7 @@ global:
 ## ref: https://hub.docker.com/r/bitnami/redis/tags/
 ##
 image:
-  registry: ltac.dev.local:5000
+  registry: docker.io
   repository: bitnami/redis
   ## Bitnami Redis image tag
   ## ref: https://github.com/bitnami/bitnami-docker-redis#supported-tags-and-respective-dockerfile-links
@@ -28,8 +28,8 @@ image:
   ## Secrets must be manually created in the namespace.
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
   ##
-  pullSecrets:
-    - jfrog-artifactory
+  # pullSecrets:
+  #   - myRegistryKeySecretName
 
 ## String to partially override redis.fullname template (will maintain the release name)
 ##
@@ -56,7 +56,7 @@ sentinel:
   ##
   image:
     registry: docker.io
-    repository: ltac.dev.local:5000/bitnami/redis-sentinel
+    repository: bitnami/redis-sentinel
     ## Bitnami Redis image tag
     ## ref: https://github.com/bitnami/bitnami-docker-redis-sentinel#supported-tags-and-respective-dockerfile-links
     ##
@@ -70,8 +70,8 @@ sentinel:
     ## Secrets must be manually created in the namespace.
     ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
     ##
-    pullSecrets:
-      - jfrog-artifactory
+    # pullSecrets:
+    #   - myRegistryKeySecretName
   masterSet: mymaster
   initialCheckTimeout: 5
   quorum: 2
@@ -627,7 +627,7 @@ metrics:
   enabled: false
 
   image:
-    registry: ltac.dev.local:5000
+    registry: docker.io
     repository: bitnami/redis-exporter
     tag: 1.12.1-debian-10-r11
     pullPolicy: IfNotPresent
@@ -635,8 +635,8 @@ metrics:
     ## Secrets must be manually created in the namespace.
     ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
     ##
-    pullSecrets:
-      - jfrog-artifactory
+    # pullSecrets:
+    #   - myRegistryKeySecretName
 
   ## Metrics exporter resource requests and limits
   ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
@@ -729,15 +729,15 @@ volumePermissions:
   enabled: false
   image:
     registry: docker.io
-    repository: ltac.dev.local:5000/bitnami/minideb
+    repository: bitnami/minideb
     tag: buster
     pullPolicy: Always
     ## Optionally specify an array of imagePullSecrets.
     ## Secrets must be manually created in the namespace.
     ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
     ##
-    pullSecrets:
-      - jfrog-artifactory
+    # pullSecrets:
+    #   - myRegistryKeySecretName
   resources: {}
   # resources:
   #   requests:
@@ -771,15 +771,15 @@ sysctlImage:
   enabled: false
   command: []
   registry: docker.io
-  repository: ltac.dev.local:5000/bitnami/minideb
+  repository: bitnami/minideb
   tag: buster
   pullPolicy: Always
   ## Optionally specify an array of imagePullSecrets.
   ## Secrets must be manually created in the namespace.
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
   ##
-  pullSecrets:
-    - jfrog-artifactory
+  # pullSecrets:
+  #   - myRegistryKeySecretName
   mountHostSys: false
   resources: {}
   # resources:

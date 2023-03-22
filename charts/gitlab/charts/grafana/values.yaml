@@ -68,7 +68,7 @@ livenessProbe:
 # schedulerName: "default-scheduler"
 
 image:
-  repository: ltac.dev.local:5000/grafana/grafana
+  repository: grafana/grafana
   tag: 7.5.5
   sha: ""
   pullPolicy: IfNotPresent
@@ -77,8 +77,8 @@ image:
   ## Secrets must be manually created in the namespace.
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
   ##
-  pullSecrets:
-    - jfrog-artifactory
+  # pullSecrets:
+  #   - myRegistrKeySecretName
 
 testFramework:
   enabled: true
@@ -115,7 +115,7 @@ extraLabels: {}
 # priorityClassName:
 
 downloadDashboardsImage:
-  repository: ltac.dev.local:5000/curlimages/curl
+  repository: curlimages/curl
   tag: 7.73.0
   sha: ""
   pullPolicy: IfNotPresent
@@ -242,7 +242,7 @@ extraInitContainers: []
 ## Enable an Specify container in extraContainers. This is meant to allow adding an authentication proxy to a grafana pod
 extraContainers: |
 # - name: proxy
-#   image: ltac.dev.local:5000/gambol99/keycloak-proxy:latest
+#   image: quay.io/gambol99/keycloak-proxy:latest
 #   args:
 #   - -provider=github
 #   - -client-id=
@@ -301,7 +301,7 @@ initChownData:
   ## initChownData container image
   ##
   image:
-    repository: ltac.dev.local:5000/busybox
+    repository: busybox
     tag: "1.31.1"
     sha: ""
     pullPolicy: IfNotPresent
@@ -602,7 +602,7 @@ smtp:
 ## Requires at least Grafana 5 to work and can't be used together with parameters dashboardProviders, datasources and dashboards
 sidecar:
   image:
-    repository: ltac.dev.local:5000/kiwigrid/k8s-sidecar
+    repository: quay.io/kiwigrid/k8s-sidecar
     tag: 1.10.7
     sha: ""
   imagePullPolicy: IfNotPresent
@@ -690,7 +690,7 @@ imageRenderer:
   replicas: 1
   image:
     # image-renderer Image repository
-    repository: ltac.dev.local:5000/grafana/grafana-image-renderer
+    repository: grafana/grafana-image-renderer
     # image-renderer Image tag
     tag: latest
     # image-renderer Image sha (optional)
