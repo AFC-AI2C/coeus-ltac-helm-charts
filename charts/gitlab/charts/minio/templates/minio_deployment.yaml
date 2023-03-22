@@ -41,9 +41,6 @@ spec:
       tolerations:
         {{- toYaml .Values.tolerations | nindent 8 }}
       {{- end }}
-      securityContext:
-        runAsUser: {{ .Values.securityContext.runAsUser }}
-        fsGroup: {{ .Values.securityContext.fsGroup }}
       volumes:
         - name: podinfo
           downwardAPI:
