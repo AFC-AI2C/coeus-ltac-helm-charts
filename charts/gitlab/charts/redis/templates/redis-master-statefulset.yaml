@@ -67,6 +67,9 @@ spec:
         - name: {{ template "redis.name" . }}
           image: {{ template "redis.image" . }}
           imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+          securityContext:
+            runAsUser: 0
+            fsGroup: 0
           command:
             - /bin/bash
             - -c
